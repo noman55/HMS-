@@ -13,7 +13,7 @@ jobs:
       - name: Login to Postman CLI
         env:
           POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
-        run: postman login --with-api-key $POSTMAN_API_KEY
+        run: echo $POSTMAN_API_KEY
       - name: Run API tests
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}
