@@ -1,0 +1,68 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: 'Sample API'
+  description: Buy or rent spacecrafts
+servers:
+  - url: 'https://developers.zomato.com/api/v2.1'
+paths:
+  /categories:
+    get:
+      summary: 'Sample endpoint: Return Todo to be done by users'
+      operationId: Categories
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: 'Sample response: Food Categories'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categories'
+
+components:
+  schemas:
+    Categories:
+      type: object
+      properties:
+        categories:
+          title: Categories
+          type: array
+          default: []
+          items:
+            title: Items
+            type: object
+            required:
+            - categories
+            properties:
+              categories:
+                title: Categories
+                type: object
+                required:
+                - id
+                - name
+                properties:
+                  id:
+                    title: Id
+                    type: integer
+                    default: 0
+                  name:
+                    title: Name
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          description: A human readable error message
+          type: string
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+security:
+  - ApiKey: []
