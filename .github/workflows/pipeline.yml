@@ -15,6 +15,8 @@ jobs:
           POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
         run: |
           echo $POSTMAN_API_KEY
+          echo "noman razvi"
+          postman login --with-api-key $POSTMAN_API_KEY
       - name: Run API tests
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}
